@@ -1,0 +1,8 @@
+version: '3.3'
+
+services:
+  web:
+    command: bash -c "pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/ && pip3 config set install.trusted-host mirrors.aliyun.com && pip3 install debugpy && python3 -m debugpy --listen 0.0.0.0:5678 --log-to /tmp/odoo/debug/ /usr/bin/odoo -c /etc/odoo/odoo.conf --workers=0 "
+    ports:
+      - 5678:5678
+      

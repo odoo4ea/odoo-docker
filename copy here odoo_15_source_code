@@ -1,0 +1,15 @@
+
+folder struct 
+
+-
+|
+|-- addons    # to push your own customize addons 
+|
+|-- odoo       # to  put odoo source code 
+   |
+   |----- addons     # to push odoo offical addons 
+   |----- api.py
+   |----- models.py
+   |----- fields.py
+   |----- ...
+   |
