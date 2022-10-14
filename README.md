@@ -1,44 +1,44 @@
 # develop Odoo in docker
 
-### 介绍
+### introduction
 Coding Debuging Odoo in Docker
 
-### 安装运行环境
+### Install the runtime environment
 
 #### Ubuntu
-- 安装 docker 
+- install docker 
 
 ref. https://docs.docker.com/engine/install/ubuntu/
 
-- 安装 docker compose
+- install docker compose
 
 #### MAC 
-- 安装 docker for desktop
+- install docker for desktop
 
 ref. https://docs.docker.com/desktop/mac/install/
 
-- 安装 docker compose
+- install docker compose
 
 
 #### Windows 
-- 安装 docker for desktop
+- install docker for desktop
 
 ref. https://docs.docker.com/desktop/windows/install/
 
-- 安装 docker compose
+- install docker compose
 
 
- **重要说明**
+ **Important**
 
-. 根目录下 放置 Odoo 源代码， 即 包含 `odoo-bin 的 Odoo 源代码整个目录
+. Place the Odoo source code in the root directory, that is, the entire directory of the Odoo source code containing `odoo-bin
 
-. 非官方 Addons 存放在根目录 addons 下
+. Unofficial Addons are stored in the root directory addons
 
 
-### 运行 odoo
+### run odoo
 
-1. 克隆本仓库到本地目录，例如 `odoo-docker`
-1. 执行下面的命令运行 Odoo
+1. Clone this repository to a local directory, for example odoo-docker
+2. Execute the following command to run Odoo
 
 ```bash
 
@@ -46,16 +46,16 @@ cd odoo-docker
 docker-compose -p odoo15 up -d
 
 ```
-3. docker 将会拉取相关的镜像，然后运行项目
-4. 浏览器打开 http://localhost:8000
+3. Docker will pull the relevant images and run the project
+4. Browser open http://localhost:8000
 
 
 
 ### FAQ
 
-1. #### Docker 报错 `Get https://registry-1.docker.io/v2/: unable to connect to HTTP proxy 127.0.0.1:1080` , 此时你需要使用 Docker 镜像注册中心
+1. #### Docker reports an error Get https://registry-1.docker.io/v2/: unable to connect to HTTP proxy 127.0.0.1:1080, in this case you need to use the Docker image registry
  
-  调整 docker 配置增加中国本地注册器镜像，
+  Adjust the docker configuration to add the Chinese local registrar image，
   ```json
   {
     "registry-mirrors": [
