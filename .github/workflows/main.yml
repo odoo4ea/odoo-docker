@@ -1,0 +1,24 @@
+name: Build-and-deploy-docker-image                                                                          # This a workflow title
+on: [push]                                                                                                   # When pushing to any branch then run this action
+
+# Env variable
+env:
+  DOCKER_USER: ${{secrets.DOCKER_USER}}
+  DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+  REPO_NAME: ${{secrets.REPO_NAME}}
+
+jobs:
+  build-push-image:                                                                                          # Job name
+    runs-on: ubuntu-latest                                                                                   # The type of runner that the job will rin on 
+    steps:                                                                                                   # Steps represents a sequence of tasks that will be executed as part of the job
+    - uses: actions/checkout@v3                                                                              # First action : checkout source code
+    - name: loggin to docker hub
+      run: |                                                                                                 # log into docker hub account
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD  
+    - name: Getting the current date                                                                         # get the date of the build
+      id: date
+      run: echo "::set-output name=date::$(date -I)"
+    - name: Building the docker image                                                                        # push The image to the docker hub
+      run: docker build . --file Dockerfile --tag $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }}
+    - name: Pushing the latest docker image to docker hub
+      run: docker push $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }}
