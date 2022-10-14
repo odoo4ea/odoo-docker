@@ -1,5 +1,5 @@
 FROM odoo:15.0
-MAINTAINER jeffery <jeffery9@gmail.com>
+MAINTAINER henry robert muwanika <hrmuwanika@gmail.com>
 
 USER root
 RUN echo "root:Docker!" | chpasswd
