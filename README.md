@@ -1,68 +1,13 @@
-# develop Odoo in docker
+# Introduction
 
-### introduction
-Coding Debuging Odoo in Docker
+Multistage and source code install with a smaller image size, based on the official Docker image for Odoo.
 
-### Install the runtime environment
+We tried to be as close as possible with odoo/docker but there are some diferences from oficial image:
 
-#### Ubuntu
-- install docker 
+* Source code downloaded from github as zip file
+* These images are not tagging the commit or date. We should just build and tag with the date or hash
+* Only one volume for the data folder (filestore and sessions)
+* Enterprise and custom will be part of the image. /mnt/ee-addons and /mnt/extra-addons
+* There is a docker-compose.yml file for easier testing
 
-ref. https://docs.docker.com/engine/install/ubuntu/
-
-- install docker compose
-
-#### MAC 
-- install docker for desktop
-
-ref. https://docs.docker.com/desktop/mac/install/
-
-- install docker compose
-
-
-#### Windows 
-- install docker for desktop
-
-ref. https://docs.docker.com/desktop/windows/install/
-
-- install docker compose
-
-
- **Important**
-
-. Place the Odoo source code in the root directory, that is, the entire directory of the Odoo source code containing `odoo-bin
-
-. Unofficial Addons are stored in the root directory addons
-
-
-### run odoo
-
-1. Clone this repository to a local directory, for example odoo-docker
-2. Execute the following command to run Odoo
-
-```bash
-
-cd odoo-docker
-docker-compose -p odoo15 up -d
-
-```
-3. Docker will pull the relevant images and run the project
-4. Browser open http://localhost:8000
-
-
-
-### FAQ
-
-1. #### Docker reports an error Get https://registry-1.docker.io/v2/: unable to connect to HTTP proxy 127.0.0.1:1080, in this case you need to use the Docker image registry
- 
-  Adjust the docker configuration to add the Chinese local registrar image，
-  ```json
-  {
-    "registry-mirrors": [
-      "https://registry.docker-cn.com",
-      "https://docker.mirrors.ustc.edu.cn"
-    ]
-  }
-  ```
-
-
+The full readme is generated over Odoo Docker Docs, specifically in [docker-library/docs/odoo](https://github.com/docker-library/docs/tree/master/odoo).
